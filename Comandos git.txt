@@ -25,3 +25,5 @@ git push --set-upstream origin rama_secundaria
 
 // para saber en que rama estoy
 git branch --show-current
+
+//gracias
