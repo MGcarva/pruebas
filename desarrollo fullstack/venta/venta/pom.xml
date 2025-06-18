@@ -65,6 +65,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+			<!-- guia 3-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
 		<!-- guia 2 -->
 		<dependency> 
 			<groupId>org.springdoc</groupId> 
@@ -72,6 +77,8 @@
 			<version>2.6.0</version> 
 		</dependency> 
 	</dependencies>
+
+	
 
 	<build>
 		<plugins>
