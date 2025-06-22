@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/turista")
+@RequestMapping("/viajero")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:8080") // Permite llamadas desde HTML local
 public class TuristaController {

@@ -94,7 +94,7 @@
         contraseña: form.contraseña.value,
       };
 
-      const response = await fetch("http://localhost:8080/turista", {
+      const response = await fetch("http://localhost:8080/viajero", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,7 +121,7 @@
       }
 
       try {
-        const response = await fetch(`http://localhost:8080/turista/rut/${rut}`);
+        const response = await fetch(`http://localhost:8080/viajero/rut/${rut}`);
         if (response.ok) {
           const data = await response.json();
           resultadoDiv.innerHTML = `
