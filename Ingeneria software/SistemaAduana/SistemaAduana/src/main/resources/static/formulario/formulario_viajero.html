@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Viajeros</title>
+    <link rel="stylesheet" href="formulario.css"> <!-- Archivo CSS externo -->
+</head>
+<body>
+    <div class="main-content">
+        <!-- Contenedor del formulario -->
+        <div class="container">
+            <img src="../imagenes/logo.png" alt="Logo Aduanas de Chile" class="logo">
+            <h2>Viajeros</h2>
+            <h2>Formulario de Registro</h2>
+            <form id="registroForm" name="registroForm" method="post" action="/viajero/guardar"> 
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="rut">Rut:</label>
+                <input type="text" name="rut" width="12" maxlength="8" id="rut"placeholder="12345678" required>
+                <label for="rut">Dv:</label>
+                <input type="text" name="dv" width="1" maxlength="1" id="dv"placeholder="k" required>
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email"  name="email" required>
+                
+                <label for="nacionalidad">Nacionalidad:</label>
+                <input type="text" id="nacionalidad" name="nacionalidad" required>
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" name="fechanacimiento" required>
+                <button type="submit">Registrar</button>
+            </form>
+          
+        </div>
+
+        <script>
+    document.getElementById("registroForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch("/viajero/guardar", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          // Guardamos mensaje temporalmente
+          alert("✅ Registro exitoso");
+          
+          window.location.href = "http://localhost:8080/login/login_viajero.html";
+        } else {
+          alert("Error al registrar.");
+        }
+      });
+    });
+  </script>        
+        
+
+
+    </body>
+
+
+</html>

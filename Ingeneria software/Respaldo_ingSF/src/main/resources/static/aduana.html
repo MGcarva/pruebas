@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aduana Chile</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('fotos/inicio.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+    /* Capa semitransparente */
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.3);
+      min-height: 100vh;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      background-color: white;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 70px;
+      margin-right: 20px;
+    }
+
+    .top-links {
+      font-size: 12px;
+      color: #003366;
+      text-align: right;
+      margin-bottom: 5px;
+    }
+
+    .search-box {
+      margin-left: auto;
+      position: relative;
+    }
+
+    .search-box input {
+      padding: 5px 30px 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+
+    .search-box::after {
+      content: '🔍';
+      position: absolute;
+      right: 10px;
+      top: 3px;
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 15px 20px;
+      background-color: #fff;
+      font-size: 14px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .main-nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .main-nav a:hover {
+      color: #003366;
+    }
+
+    .titulo {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 28px;
+      color: #01579b;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .boton {
+      display: flex;
+      align-items: center;
+      width: 300px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid white;
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .icono {
+      margin-right: 15px;
+      font-size: 24px;
+    }
+
+    .rojo { background-color: #d32f2f; }
+    .naranjo { background-color: #f57c00; }
+    .verde { background-color: #388e3c; }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="contenido">
+    <header>
+      <div class="logo-container">
+        <img src="aduana.png" alt="Logo Aduanas Chile">
+      </div>
+      <div class="top-links">
+        NUESTRO SERVICIO | ADUANA EN REGIONES | TRANSPARENCIA ACTIVA | SOLICITUDES | NEWS
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Busca aquí la información que necesitas...">
+      </div>
+    </header>
+
+    <nav class="main-nav">
+      <a href="#">Normativas</a>
+      <a href="#">Acuerdos y Tratados</a>
+      <a href="#">Importador Exportador</a>
+      <a href="#">Estadísticas COMEX</a>
+      <a href="#">Trámites en Línea</a>
+      <a href="#">Aduana Informa</a>
+      <a href="#">Subastas</a>
+      <a href="#">Centro de Ayuda</a>
+    </nav>
+
+    <h1 class="titulo">Aduana</h1>
+
+    <div class="menu">
+      <a href="viajero.html" class="boton rojo">
+        <span class="icono">🧳</span> Viajero, turista
+      </a>
+      <a href="funcionario.html" class="boton naranjo">
+        <span class="icono">👷</span> Funcionario
+      </a>
+      <a href="admin.html" class="boton verde">
+        <span class="icono">🤝</span> Admin
+      </a>
+    </div>
+  </div>
+</body>
+</html>
