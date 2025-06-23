@@ -1,8 +1,5 @@
 package com.venta.venta.Venta;  
 import com.venta.venta.assembleres.VentaModelAssembler;
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.CollectionModel;
