@@ -4,23 +4,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import proyecto.aduana.duoc.proyecto.aduana.duoc.repository.repositoryViajero;
-import proyecto.aduana.duoc.proyecto.aduana.duoc.repository.repositoryViajero.ViajeroRepository;
-import proyecto.aduana.duoc.proyecto.aduana.duoc.service.serviceViajero;
+
 import proyecto.aduana.duoc.proyecto.aduana.duoc.Model.Viajero;
 
-import java.util.Map;
 
 @RestController
 @RequestMapping("viajero")
@@ -36,7 +34,7 @@ public class controllerViajero {
     
     @PostMapping("/guardar")
     public String guardarViajero(@ModelAttribute Viajero viajero) {
-        viajeroRepository.insertarViajero(viajero.getNombre(), viajero.getRut(), viajero.getDv(),  viajero.getPassword(),
+        viajeroRepository.insertarViajero(viajero.getNombre(), viajero.getRut(),   viajero.getPassword(),
                                       viajero.getEmail(), viajero.getNacionalidad(), viajero.getFechanacimiento()  );
         
         return "redirect:/home";

@@ -18,5 +18,19 @@
     <a href="../login/login_funcionario.html" style="text-decoration: none;"><button class="cerrar-sesion"  >Cerrar Sesión</button></a>
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const funcionario = JSON.parse(localStorage.getItem("funcionario"));
+      
+      if (!admin) {
+        window.location.href = "login.html";
+      } else {
+        document.querySelector(".container h1").textContent = `Bienvenido, ${funcionario.nombre}`;
+        
+        document.querySelector(".container img").src = "../imagenes/logo.png"; // Asegúrate de que la ruta sea correcta
+    
+      }
+    });
+    </Script>
 </body>
 </html>

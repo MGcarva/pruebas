@@ -1,144 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registro Viajero</title>
-  <style>
-    body {
-      background-color: #e3f2fd;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #01579b;
-    }
-
-    form, .buscar-form {
-      max-width: 400px;
-      margin: 20px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      width: 100%;
-      background-color: #01579b;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background-color: #003f6b;
-    }
-
-    .resultado {
-      max-width: 400px;
-      margin: 20px auto;
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      color: #333;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Buscar Viajero</title>
 </head>
 <body>
-  <h2>Registro de Viajero</h2>
+  <h2>Buscar Viajero</h2>
 
-  <!-- Formulario para registrar -->
-  <form id="viajeroForm">
-    <input type="text" name="nombre" placeholder="Nombre completo" required />
-    <input type="text" name="rut" placeholder="RUT" required />
-    <input type="email" name="email" placeholder="Correo electrónico" required />
-    <input type="password" name="contraseña" placeholder="Contraseña" required />
-    <button type="submit">Registrar</button>
+  <form id="formulario">
+    <label>RUT:</label><br>
+    <input type="text" id="rut" required><br>
+    <label>Password:</label><br>
+    <input type="password" id="password" required><br>
+    <button type="submit">Buscar</button>
   </form>
 
-  <!-- Formulario para buscar -->
-  <div class="buscar-form">
-    <input type="text" id="buscarRut" placeholder="Buscar por RUT" />
-    <button onclick="buscarPorRut()">Buscar Viajero</button>
-  </div>
-
-  <!-- Resultado de búsqueda -->
-  <div id="resultadoBusqueda" class="resultado" style="display: none;"></div>
+  <h3>Resultado:</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>RUT</th>
+      </tr>
+    </thead>
+    <tbody id="resultadoTabla"></tbody>
+  </table>
 
   <script>
-    // Envío de formulario de registro
-    document.getElementById("viajeroForm").addEventListener("submit", async function (e) {
+    document.getElementById("formulario").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const form = e.target;
-      const data = {
-        nombre: form.nombre.value,
-        rut: form.rut.value,
-        email: form.email.value,
-        contraseña: form.contraseña.value,
-      };
+      const rut = document.getElementById("rut").value;
+      const password = document.getElementById("password").value;
+      console.log("Enviando:", rut, password);
+      fetch(`http://localhost:8080/viajero/buscarPorRut?rut=${rut}&password=${password}`)
+        .then(response => response.json())
+        .then(data => {
+          const tabla = document.getElementById("resultadoTabla");
+          tabla.innerHTML = "";
 
-      const response = await fetch("http://localhost:8080/viajero", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+          if (data.length === 0) {
+            alert("No se encontró ningún viajero.");
+            return;
+          }
 
-      if (response.ok) {
-        alert("Viajero registrado exitosamente");
-        form.reset();
-      } else {
-        alert("Error al registrar viajero");
-      }
+          data.forEach(viajero => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
+              <td>${viajero.nombre}</td>
+              <td>${viajero.apellido}</td>
+              <td>${viajero.rut}</td>
+            `;
+            tabla.appendChild(fila);
+          });
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          alert("Error al buscar viajero.");
+        });
     });
-
-    // Función para buscar viajero por RUT
-    async function buscarPorRut() {
-      const rut = document.getElementById("buscarRut").value;
-      const resultadoDiv = document.getElementById("resultadoBusqueda");
-
-      if (!rut) {
-        alert("Por favor ingresa un RUT");
-        return;
-      }
-
-      try {
-        const response = await fetch(`http://localhost:8080/viajero/rut/${rut}`);
-        if (response.ok) {
-          const data = await response.json();
-          resultadoDiv.innerHTML = `
-            <strong>Nombre:</strong> ${data.nombre}<br>
-            <strong>Email:</strong> ${data.email}<br>
-            <strong>Contraseña:</strong> ${data.contraseña}
-          `;
-          resultadoDiv.style.display = "block";
-        } else {
-          resultadoDiv.innerHTML = "Viajero no encontrado.";
-          resultadoDiv.style.display = "block";
-        }
-      } catch (error) {
-        resultadoDiv.innerHTML = "Error al buscar el viajero.";
-        resultadoDiv.style.display = "block";
-      }
-    }
   </script>
 </body>
 </html>
