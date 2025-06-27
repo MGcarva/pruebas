@@ -18,16 +18,15 @@ public class repositoryViajero {
   
 
     @Transactional
-     public void insertarViajero(String nombre, String rut, String dv, String password,
+     public void insertarViajero(String nombre, String rut,  String password,
                                  String email, String nacionalidad, String fechanacimiento  ) {
-        entityManager.createNativeQuery("CALL sp_inserta_viajero(?, ?, ?, ?, ?, ?, ?)")
+        entityManager.createNativeQuery("CALL sp_inserta_viajero(?, ?,  ?, ?, ?, ?)")
                 .setParameter(1, nombre)
                 .setParameter(2, rut)
-                .setParameter(3, dv)
-                .setParameter(4, password)
-                .setParameter(5, email)
-                .setParameter(6, nacionalidad)
-                .setParameter(7, fechanacimiento)
+                .setParameter(3, password)
+                .setParameter(4, email)
+                .setParameter(5, nacionalidad)
+                .setParameter(6, fechanacimiento)
                 .executeUpdate();
     }
 

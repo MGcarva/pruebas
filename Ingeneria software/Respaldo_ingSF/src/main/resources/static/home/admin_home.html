@@ -49,5 +49,19 @@
     <img src="../imagenes/img_footer.png" alt="Certificación" class="aptus-seal">
   </div>
 </footer>
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const admin = JSON.parse(localStorage.getItem("admin"));
+      
+      if (!admin) {
+        window.location.href = "login.html";
+      } else {
+        document.querySelector(".container h1").textContent = `Bienvenido, ${admin.nombre}`;
+        
+        document.querySelector(".container img").src = "../imagenes/logo.png"; // Asegúrate de que la ruta sea correcta
+    
+      }
+    });
+    </Script>
 </body>
 </html>
