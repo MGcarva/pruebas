@@ -65,6 +65,13 @@ document.getElementById('formularioSAG').addEventListener('submit', function(e) 
     alert("El archivo debe ser un documento PDF.");
     return;
   }
+    function registrar() {
+    // Mostrar mensaje de éxito
+    alert("Formulario SAG enviado correctamente");
 
-  alert("Formulario SAG enviado correctamente.");
+    // Redirigir a otra página después del alert
+    window.location.href = "../home/funcionario_home.html";
+  }
+  registrar();
+
 });

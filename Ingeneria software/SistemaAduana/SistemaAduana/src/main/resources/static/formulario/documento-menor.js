@@ -31,6 +31,13 @@ document.getElementById('documentoMenor').addEventListener('submit', function(e)
     alert("El archivo debe ser un documento PDF.");
     return;
   }
+  function registrar() {
+    // Mostrar mensaje de éxito
+    alert("Formulario del menor enviado correctamente.");
 
-  alert("Formulario del menor enviado correctamente.");
+    // Redirigir a otra página después del alert
+    window.location.href = "../home/viajero_home.html";
+  }
+
+  registrar();
 });

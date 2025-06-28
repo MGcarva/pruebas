@@ -25,6 +25,13 @@ document.getElementById('documentoVehicular').addEventListener('submit', functio
     alert("El archivo debe ser un documento PDF.");
     return;
   }
+    function registrar() {
+    // Mostrar mensaje de éxito
+    alert("Documento Vehicular enviado correctamente.");
 
-  alert("Documento Vehicular enviado correctamente.");
+    // Redirigir a otra página después del alert
+    window.location.href = "../home/viajero_home.html";
+  }
+
+  registrar();
 });
