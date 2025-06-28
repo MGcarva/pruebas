@@ -20,7 +20,7 @@
                 <input type="text" name="rut" width="10" maxlength="9" id="rut"placeholder="12345678"  pattern="[0-9]+" title="Solo se permiten números" required>
                 
                 <label for="contrasena">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" maxlength="10" id="password" name="password" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email"  name="email" required>
                 
@@ -45,7 +45,11 @@
         return; // ⛔ Salir si el rut es inválido
     }
 
+    if (!validarFechaNacimiento()) {
+        return; 
+    }
 
+    // Si el rut es válido, enviar el formulario
       const formData = new FormData(this);
             
       fetch("/viajero/guardar", {
@@ -70,7 +74,7 @@
 
     // Función para validar  RUT 
 function validarRut(rut) {
- alert("aca");
+ 
   rut = rut.replace(/\./g, '').replace('-', '');
 
   const cuerpo = rut.slice(0, -1);
@@ -89,11 +93,27 @@ function validarRut(rut) {
   
   return dv === dvEsperado;
 }
+//Funcion valida fecha
+function validarFechaNacimiento() {
+    const fechaInput = document.getElementById("fechaNacimiento").value;
+    if (!fechaInput) {
+        alert("Por favor ingrese la fecha de nacimiento.");
+        return false;
+    }
+    const fechaNacimiento = new Date(fechaInput);
+    const hoy = new Date();
+    hoy.setHours(0,0,0,0);
+
+    if (fechaNacimiento > hoy) {
+        alert("La fecha de nacimiento no puede ser mayor que la fecha actual.");
+        return false;
+    }
+    return true;
+}
+
+
   </script>        
-        
-
-
-    </body>
+  </body>
 
 
 </html>
