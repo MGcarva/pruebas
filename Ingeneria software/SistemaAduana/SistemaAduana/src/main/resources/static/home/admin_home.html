@@ -11,7 +11,7 @@
   <div class="container">
     <img class="logo_principal" src="../imagenes/logo.png" alt="Logo Aduanas" class="logo">
     <h1>Gestión del sistema</h1>
-    <button onclick="location.href='#'">Agregar funcionario de aduana</button>
+    <button onclick="location.href='../formulario/formulario_funcionario.html'">Agregar funcionario de aduana</button>
     <button onclick="location.href='#'">Eliminar funcionario</button>
     <button onclick="location.href='#'">Gestionar informes generados</button>
     <button onclick="location.href='#'">Evaluar solicitudes del viajero</button>
@@ -49,19 +49,5 @@
     <img src="../imagenes/img_footer.png" alt="Certificación" class="aptus-seal">
   </div>
 </footer>
- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const admin = JSON.parse(localStorage.getItem("admin"));
-      
-      if (!admin) {
-        window.location.href = "login.html";
-      } else {
-        document.querySelector(".container h1").textContent = `Bienvenido, ${admin.nombre}`;
-        
-        document.querySelector(".container img").src = "../imagenes/logo.png"; // Asegúrate de que la ruta sea correcta
-    
-      }
-    });
-    </Script>
 </body>
 </html>
